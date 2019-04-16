@@ -3,6 +3,10 @@
 # Edit at https://www.gitignore.io/?templates=node,visualstudiocode
 
 ### Node ###
+
+# Temp folder
+tmp/
+
 # Logs
 logs
 *.log
