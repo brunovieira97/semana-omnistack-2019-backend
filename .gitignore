@@ -6,6 +6,7 @@
 
 # Temp folder
 tmp/
+!tmp/.gitkeep
 
 # Logs
 logs
