@@ -1,20 +1,20 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const path = require("path");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const path = require('path');
+const cors = require('cors');
 
 const app = express();
 
 app.use(cors());
 
-const server = require("http").Server(app);
-const io = require("socket.io")(server);
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 io.on(
-	"connection",
+	'connection',
 	socket => {
 		socket.on(
-			"connectRoom",
+			'connectRoom',
 			box => {
 				socket.join(box);
 			}
@@ -23,7 +23,7 @@ io.on(
 );
 
 mongoose.connect(
-	"mongodb+srv://bvieira:2gHF2NpBaPCwetNd@cluster0-fr5p9.mongodb.net/test?retryWrites=true",
+	'mongodb+srv://bvieira:2gHF2NpBaPCwetNd@cluster0-fr5p9.mongodb.net/test?retryWrites=true',
 	{
 		useNewUrlParser: true
 	}
@@ -43,12 +43,12 @@ app.use(
 );
 
 app.use(
-	"/files",
+	'/files',
 	express.static(
-		path.resolve(__dirname, "..", "tmp")
+		path.resolve(__dirname, '..', 'tmp')
 	)
 );
 
-app.use(require("./routes"));
+app.use(require('./routes'));
 
-server.listen(1337);
+server.listen(process.env.PORT || 3333);
